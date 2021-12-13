@@ -8,7 +8,7 @@ import HeaderCenter from '../components/HeaderCenter'
 
 
 // product
-import Product from '../components/Product';
+import Product from '../components/product';
 // end product tabs
 
 
@@ -18,7 +18,7 @@ import NameForm from '../components/formEmail';
 
 
 // footer
-import Footer from '../components/footer'
+import Footer from '../components/Footer'
 import Copyright from '../components/Copyright'
 // end footer
 
