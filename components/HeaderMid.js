@@ -167,7 +167,7 @@ const HeaderMid = () => {
                 </Container>
             </React.Fragment>
 
-        </div >
+        </div>
     )
 }
 export default HeaderMid;
