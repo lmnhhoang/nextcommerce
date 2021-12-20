@@ -1,129 +1,192 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
-import Container from "@mui/material/Container";
-import Breadcrumbs from "@mui/material/Breadcrumbs";
-import Link from "@mui/material/Link";
-import AccIcon from "@mui/icons-material/AccountBoxOutlined";
-import WhatshotIcon from "@mui/icons-material/LanguageSharp";
-import LoginIcon from "@mui/icons-material/Login";
-import NativeSelect from "@mui/material/NativeSelect";
-import { makeStyles } from '@mui/styles';
+import React from "react";
+import { Container, Box, Grid, Hidden } from '@mui/material';
 
 
-const useStyles = makeStyles({
-  
-    '@media (max-width: 768px)': {
-      subHeaderMenu:{
-        display:'none',
+// import icon
+
+import LanguageIcon from '@mui/icons-material/Language';
+import EditSharpIcon from '@mui/icons-material/EditSharp';
+import LoginSharpIcon from '@mui/icons-material/LoginSharp';
+// makestyle
+import { makeStyles } from "@material-ui/core";
+
+// import images 
+import arrow_down from '../assets/img/arrow_down.png';
+
+const colorHeading = '#323232';
+const colorHover = '#40c6ff';
+const colorDefaul = '#666';
+
+const useStyle_HeaderTop = makeStyles({
+  headerTop: {
+    padding: '10px',
+    backgroundColor: '#f3f3f3',
+  },
+  menuTop: {
+    listStyle: 'none',
+    padding: '0px',
+    margin: '0px',
+    '& li': {
+      float: 'left',
+      padding: '0px 10px',
+      position: 'relative',
+      '&:first-child': {
+        paddingLeft: '0px',
+        '&::before': {
+          display: 'none',
+        }
+      },
+      '&::before': {
+        position: 'absolute',
+        content: '""',
+        width: '1px',
+        height: '14px',
+        left: '0px',
+        top: '6px',
+        backgroundColor: '#999999',
+      },
+      '& a': {
+        color: '#999',
+        fontSize: '14px',
+        fontFamily: "Mulish,'sans-serif'",
+        '&:hover': {
+          color: `${colorHover}`,
+        }
+      }
+    }
+  },
+  headerTopRight: {
+    listStyle: 'none',
+    padding: '0px',
+    margin: '0px',
+    float: 'right',
+    '& li': {
+      float: 'left',
+      padding: '0px 10px',
+      position: 'relative',
+      display: 'inline-flex',
+      alignItems: 'center',
+      '&:first-child': {
+        paddingLeft: '0px',
+        '&::before': {
+          display: 'none',
+        }
+      },
+      '&::before': {
+        position: 'absolute',
+        content: '""',
+        width: '1px',
+        height: '14px',
+        left: '0px',
+        top: '4px',
+        backgroundColor: '#999999',
+      },
+      '& a': {
+        color: '#999',
+        fontSize: '14px',
+        fontFamily: "Mulish,'sans-serif'",
+        display: 'inline-flex',
+        alignItems: 'center',
+        '&:hover': {
+          color: `${colorHover}`,
+        },
+        '& svg': {
+          fontSize: '14px',
+          marginRight: '5px',
+        }
+      },
+      '& svg': {
+        fontSize: '14px',
+        marginRight: '5px',
+        color: '#999',
+      },
+      '& select': {
+        border: 'none',
+        color: '#999',
+        fontSize: '14px',
+        fontFamily: "Mulish,'sans-serif'",
+        '&:focus': {
+          outline: 'none',
+        }
+      }
+    },
+    '@media (max-width: 899px)': {
+      textAlign: 'center',
+      float: 'none',
+      '& li': {
+        float: 'none',
+        display: 'inline-block',
+      }
+    },
+    '@media (max-width: 425px)': {
+      '& li': {
+        '& span': {
+          display: 'none',
+        }
+      }
+    }
+  },
+  curency: {
+    '& select': {
+      paddingRight: '15px',
+      background: 'transparent',
+      appearance: 'none',
+      backgroundImage: `url(${arrow_down.src})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'right 1px top 6px;',
+    }
+  },
+  language: {
+    '& select': {
+      background: 'transparent',
+      appearance: 'none',
+      backgroundImage: `url(${arrow_down.src})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'right 1px top 7px;',
     }
   }
-  
 });
 
-function handleClick(event) {
-  event.preventDefault();
-  console.info("You clicked a breadcrumb.");
-}
-
-
-
 const SideBarTop = () => {
-  const classes = useStyles();
+  const classes = useStyle_HeaderTop()
   return (
-    <Box sx={{backgroundColor:'rgb(243,243,243)' }}>
-    <Container>
-      <Box sx={{ flexGrow: 1, padding: '10px 0',
-    backgroundColor:'rgb(243,243,243)' }}>
+    <div className={classes.headerTop}>
+      <Container>
         <Grid container spacing={2} >
-          <Grid item xs={6} md={6} className={classes.subHeaderMenu} >
-            <Box role="presentation" onClick={handleClick} >
-              <Breadcrumbs aria-label="breadcrumb">
-                <Link
-                  underline="hover"
-                  sx={{ fontSize: 14 }}
-                  color="inherit"
-                  href="/"
-                >
-                  Get the app
-                </Link>
-                <Link
-                  underline="hover"
-                  sx={{ fontSize: 14 }}
-                  color="inherit"
-                  href="#"
-                >
-                  Sell on Multistore
-                </Link>
-                <Link
-                  underline="hover"
-                  sx={{ fontSize: 14 }}
-                  color="inherit"
-                  href="#"
-                >
-                  Customer Care
-                </Link>
-                <Link
-                  underline="hover"
-                  sx={{ fontSize: 14 }}
-                  color="inherit"
-                  href="#"
-                >
-                  Track my order
-                </Link>
-              </Breadcrumbs>
+          <Grid item sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }} md={6}>
+            <Box>
+              <ul className={classes.menuTop}>
+                <li><a href="#">Get the app</a></li>
+                <li><a href="#">Sell on Multistore</a></li>
+                <li><a href="#">Customer Care</a></li>
+                <li><a href="#">Track my order</a></li>
+              </ul>
             </Box>
           </Grid>
-          <Grid item xs={6} md={6} >
-            <Box role="presentation" onClick={handleClick} sx={{ float:"right" }} className={classes.topBarMenu}> 
-            <Breadcrumbs aria-label="breadcrumb">
-              <Box className={classes.topBarCurLang} >
-                <Breadcrumbs aria-label="breadcrumb" sx={{ display: "flex" }}>
-                  <NativeSelect defaultValue={30}>
-                    <option value={10}>USD, $</option>
-                    <option value={20}>EUR, €</option>
-                  </NativeSelect>
-                  <Link
-                    underline="hover"
-                    sx={{ display: "flex", alignItems: "center", fontSize: 14 }}
-                    color="inherit"
-                    href="/getting-started/installation/"
-                  >
-                    <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-                    English
-                  </Link>
-                </Breadcrumbs>
-                </Box>
-                <Box className={classes.topBarLink}>
-                <Breadcrumbs aria-label="breadcrumb">
-                  <Link
-                    underline="hover"
-                    sx={{ display: "flex", alignItems: "center", fontSize: 14 }}
-                    color="inherit"
-                    href="/"
-                  >
-                    <AccIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-                    Join Free
-                  </Link>
-                  <Link
-                    underline="hover"
-                    sx={{ display: "flex", alignItems: "center", fontSize: 14 }}
-                    color="inherit"
-                    href="/getting-started/installation/"
-                  >
-                    <LoginIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-                    Login
-                  </Link>
-                </Breadcrumbs>
-                </Box>
-              </Breadcrumbs>
+          <Grid item xs={12} sm={12} md={6} >
+            <Box>
+              <ul className={classes.headerTopRight}>
+                <li className={classes.curency}>
+                  <select>
+                    <option value="">USD, $</option>
+                    <option value="">EUR, €</option>
+                  </select>
+                </li>
+                <li className={classes.language}>
+                  <LanguageIcon />
+                  <select>
+                    <option value="">English</option>
+                    <option value="">Viet Nam</option>
+                  </select>
+                </li>
+                <li><a href="#"><EditSharpIcon /><span>Join free</span></a></li>
+                <li><a href="#"><LoginSharpIcon /><span>Login</span></a></li>
+              </ul>
             </Box>
           </Grid>
         </Grid>
-      </Box>
-    </Container>
-    </Box>
+      </Container>
+    </div >
   );
 }
 export default SideBarTop;

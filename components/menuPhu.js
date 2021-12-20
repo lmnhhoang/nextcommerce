@@ -44,6 +44,7 @@ const useStyle_menuMain = makeStyles({
       justifyContent: 'flex-end',
     },
     '& button': {
+      marginTop: '14px',
       width: '36px',
       height: '36px',
       backgroundColor: '#fff',

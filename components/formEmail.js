@@ -3,7 +3,7 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-
+import Typography from "@mui/material/Typography";
 
 
 class NameForm extends React.Component {
@@ -30,17 +30,27 @@ class NameForm extends React.Component {
             formemail:{
                 marginTop: 50,
                 backgroundImage: "url('http://solution.cmsmart.net/wp_multistore/ebay/wp-content/uploads/2017/11/bg-home1-newleter.jpg?id=4637') !important",
-            
                 backgroundPosition: "center !important",
                 backgroundRepeat: "no-repeat !important",
                 backgroundSize: "cover !important",
                 marginBottom: -21,
                 paddingTop: 70,
                 paddingBottom: 52,
+                "@media  (max-width: 768px)":{
+                    formemail:{
+                        textAlign:'center',
+                    },
+                }
             },
             form:{
                 display: "flex",
                 position: "relative",
+                "@media  (max-width: 768px)":{
+                    form:{
+                        display:'inline-blockunset !important',
+                    }
+                        
+                    }
             },
             text:{
                 fontSize:30,
@@ -77,15 +87,7 @@ class NameForm extends React.Component {
             },
             
             
-            "@media  (max-width: 768px)":{
-                formemail:{
-                    textAlign:'center',
-                },
-                form:{
-                    display:'inline-blockunset !important',
-                }
-                    
-                }
+            
         }
 
     return (

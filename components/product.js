@@ -164,8 +164,15 @@ class Product extends Component {
     render() {
 
         const styles = {
+           
             product: {
+                marginTop:50,
                 textAlign: 'center',
+                '@media  (max-width: 767px)': {
+                    product: {
+                        textAlign: 'center',
+                    }
+                }
             },
             tabsProduct: {
 
@@ -181,11 +188,24 @@ class Product extends Component {
             },
             tabsTitle: {
                 display: 'inline-flex',
+                '@media  (max-width: 767px)': {
+                    tabsTitle: {
+                        display: 'inline-block ',
+                        width: '100%',
+                    }
+                }
 
             },
 
             tabs: {
                 marginRight: 12,
+                '@media  (max-width: 767px)': {
+                    tabs: {
+                        display: 'block',
+                        margin: '0px 0px 20px 0px',
+                        width: '100%',
+                    }
+                }
 
 
             },
@@ -203,6 +223,12 @@ class Product extends Component {
                     backgroundColor: ["rgb(64,198,255)"],
                     color: ['#fff'],
                     transition: ['width 2s'],
+                },
+                '@media  (max-width: 767px)': {
+                    tabText: {
+                        width: '100%',
+                        display: 'block',
+                    },
                 }
             },
             itemProduct: {
@@ -211,25 +237,8 @@ class Product extends Component {
             cardButton: {
                 paddingBottom: 15,
             },
-
-
-            '@media  (max-width: 767px)': {
-                product: {
-                    textAlign: 'center',
-                },
-                tabsTitle: {
-                    display: 'inline-block ',
-                    width: '100%',
-                },
-                tabs: {
-                    display: 'block',
-                    margin: '0px 0px 20px 0px',
-                    width: '100%',
-                },
-                tabText: {
-                    width: '100%',
-                    display: 'block',
-                },
+            productImg:{
+                width:250
             }
         }
 
@@ -238,7 +247,7 @@ class Product extends Component {
             <Grid style={styles.itemProduct} item lg="3" md="3" sm="6" key={key}>
 
                 <Paper>
-                    <a href="#"><img src={value.image} alt="" /></a>
+                    <a href="#"><img style={styles.productImg} src={value.image} alt="" /></a>
                     <div style={styles.cardBody}>
                         <h4><a href="#" style={styles.cardTitle}>{value.title}</a></h4>
                         <div style={styles.startRating}>
@@ -259,7 +268,7 @@ class Product extends Component {
         let mapContentFilterComputer = this.state.fetchFilterComputer.map((value, key) => (
             <Grid style={styles.itemProduct} item lg="3" md="3" sm="6" key={key}>
                 <Paper>
-                    <a href="#"><img src={value.image} alt="" /></a>
+                    <a href="#"><img style={styles.productImg} src={value.image} alt="" /></a>
                     <div style={styles.cardBody}>
                         <h4><a href="#" style={styles.cardTitle}>{value.title}</a></h4>
                         <div style={styles.startRating}>
@@ -280,7 +289,7 @@ class Product extends Component {
         let mapContentFilterSmartPhone = this.state.fetchFilterSmartPhone.map((value, key) => (
             <Grid style={styles.itemProduct} item lg="3" md="3" sm="6" key={key}>
                 <Paper>
-                    <a href="#"><img src={value.image} alt="" /></a>
+                    <a href="#"><img style={styles.productImg} src={value.image} alt="" /></a>
                     <div style={styles.cardBody}>
                         <h4><a href="#" style={styles.cardTitle}>{value.title}</a></h4>
                         <div style={styles.startRating}>
@@ -299,7 +308,7 @@ class Product extends Component {
         let mapContentFilterSport = this.state.fetchFilterSport.map((value, key) => (
             <Grid style={styles.itemProduct} item lg="3" md="3" sm="6" key={key}>
                 <Paper>
-                    <a href="#"><img src={value.image} alt="" /></a>
+                    <a href="#"><img style={styles.productImg} src={value.image} alt="" /></a>
                     <div style={styles.cardBody}>
                         <h4><a href="#" style={styles.cardTitle}>{value.title}</a></h4>
                         <div style={styles.startRating}>
@@ -318,7 +327,7 @@ class Product extends Component {
         let mapContentFilterJewelry = this.state.fetchFilterJewelry.map((value, key) => (
             <Grid style={styles.itemProduct} item lg="3" md="3" sm="6" key={key}>
                 <Paper>
-                    <a href="#"><img src={value.image} alt="" /></a>
+                    <a href="#"><img style={styles.productImg} src={value.image} alt="" /></a>
                     <div style={styles.cardBody}>
                         <h4><a href="#" style={styles.cardTitle}>{value.title}</a></h4>
                         <div style={styles.startRating}>
@@ -337,7 +346,7 @@ class Product extends Component {
         let mapContentFilterElectronis = this.state.fetchFilterElectronis.map((value, key) => (
             <Grid style={styles.itemProduct} item lg="3" md="3" sm="6" key={key}>
                 <Paper>
-                    <a href="#"><img src={value.image} alt="" /></a>
+                    <a href="#"><img style={styles.productImg} src={value.image} alt="" /></a>
                     <div style={styles.cardBody}>
                         <h4><a href="#" style={styles.cardTitle}>{value.title}</a></h4>
                         <div style={styles.startRating}>
