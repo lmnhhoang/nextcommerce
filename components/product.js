@@ -2,6 +2,7 @@ import React, { Component, useState } from 'react';
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
+import Link from 'next/link';
 import Rating from '@mui/material/Rating';
 
 // class Product extends Component {
@@ -163,7 +164,7 @@ import Rating from '@mui/material/Rating';
 //     render() {
 
 //         const styles = {
-           
+
 //             product: {
 //                 marginTop:50,
 //                 textAlign: 'center',
@@ -412,13 +413,12 @@ import Rating from '@mui/material/Rating';
 
 // export default Product;
 
-import { Button,Typography } from '@mui/material';
-import  {makeStyles}  from '@mui/styles';
-import Link from 'next/link';
+import { Button, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles(theme => ({
-	product: {
-        marginTop:50,
+    product: {
+        marginTop: 50,
         textAlign: 'center',
         '@media  (maxWidth: 767px)': {
             product: {
@@ -489,36 +489,37 @@ const useStyles = makeStyles(theme => ({
     cardButton: {
         paddingBottom: 15,
     },
-    productImg:{
-        width:'150px',
+    productImg: {
+        width: '150px',
         height: 'auto'
     }
 })
 )
 
-export default function Product( props ){
-	const classes = useStyles();
-	const { product } = props;
-	return (
-        <>
-           <Paper>
-                <Link href={`/p/${product.databaseId}`}>
-                    <a><img className={classes.productImg} src={product?.image?.sourceUrl} alt="" /></a>
-                </Link>
+export default function Product(props) {
+    const classes = useStyles();
+    const { product } = props;
+    //console.warn(product);
+    let imageURl = '';
+    return (
+        <Paper>
 
-                <div className={classes.cardBody}>
-                    <h4><a href="#" className={classes.cardTitle}>{product?.title}</a></h4>
-                    <div className={classes.startRating}>
-                        <Rating name="read-only" value='0' readOnly />
-                    </div>
-                    <p className={classes.cardPrice}>{product?.price}</p>
-                    <div className={classes.cardButton}>
-                        <Button variant="contained" color="primary">Add to cart</Button>
-                    </div>
+            <Link as={`/productSingle/${product.slug}-${product.databaseId}`} href={`/productSingle?slug=${product.slug}-${product.databaseId}`}>
+                <a >
+                    <img className={classes.productImg} src={product?.image?.sourceUrl} alt="" />
+                </a>
+            </Link>
+            <div className={classes.cardBody}>
+                <h4><a href="#" className={classes.cardTitle}>{product?.name}</a></h4>
+                <div className={classes.startRating}>
+                    <Rating name="read-only" value='0' readOnly />
                 </div>
-            </Paper> 
-        </>
-        
-		
-	);
+                <p className={classes.cardPrice}>{product?.price}</p>
+                <div className={classes.cardButton}>
+                    <Button variant="contained" color="primary">Add to cart</Button>
+                </div>
+            </div>
+        </Paper>
+
+    );
 }
