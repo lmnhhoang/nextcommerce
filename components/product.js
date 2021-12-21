@@ -414,6 +414,7 @@ import Rating from '@mui/material/Rating';
 
 import { Button,Typography } from '@mui/material';
 import  {makeStyles}  from '@mui/styles';
+import Link from 'next/link';
 
 const useStyles = makeStyles(theme => ({
 	product: {
@@ -498,32 +499,26 @@ const useStyles = makeStyles(theme => ({
 export default function Product( props ){
 	const classes = useStyles();
 	const { product } = props;
-	let imageURl = '';
 	return (
-        <Paper>
-            {/* <div className={classes.card} >
-                <Typography variant='h4' className={classes.cardHeader}>{product?.name}</Typography>
-                <img	className={classes.productImage}
-                    src={product?.image?.sourceUrl}
-                    alt="Product image"/>
-                <div className={classes.cardBody}>
-                    <Typography variant='h6' className={classes.cardSubtitle}>{product?.price}</Typography>
-                    <Button variant="outlined">View</Button>
-                </div>
+        <>
+           <Paper>
+                <Link href={`/p/${product.databaseId}`}>
+                    <a><img className={classes.productImg} src={product?.image?.sourceUrl} alt="" /></a>
+                </Link>
 
-            </div> */}
-            <a href="#"><img className={classes.productImg} src={product?.image?.sourceUrl} alt="" /></a>
-            <div className={classes.cardBody}>
-                <h4><a href="#" className={classes.cardTitle}>{product?.title}</a></h4>
-                <div className={classes.startRating}>
-                    <Rating name="read-only" value='0' readOnly />
+                <div className={classes.cardBody}>
+                    <h4><a href="#" className={classes.cardTitle}>{product?.title}</a></h4>
+                    <div className={classes.startRating}>
+                        <Rating name="read-only" value='0' readOnly />
+                    </div>
+                    <p className={classes.cardPrice}>{product?.price}</p>
+                    <div className={classes.cardButton}>
+                        <Button variant="contained" color="primary">Add to cart</Button>
+                    </div>
                 </div>
-                <p className={classes.cardPrice}>{product?.price}</p>
-                <div className={classes.cardButton}>
-                    <Button variant="contained" color="primary">Add to cart</Button>
-                </div>
-            </div>
-        </Paper>
+            </Paper> 
+        </>
+        
 		
 	);
 }

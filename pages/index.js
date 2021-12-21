@@ -25,7 +25,7 @@ import client from '../libs/apollo/ApolloClient';
 import gql from 'graphql-tag';
 
 
-const PRODUCT_QUERY= gql`query{
+const PRODUCTS_QUERY= gql`query{
   products(first: 8) {
     nodes {
       id
@@ -63,8 +63,35 @@ const Home = (props) => {
   return (
     <div>
       <SwipeableTextMobileStepper />
-      <Container>
-        <Grid container spacing={{ sm: 2,md: 2, xs: 4 ,lg: 6}} columns={{ xs: 4, sm: 6, md: 4, lg: 4}}>
+      <Container maxWidth="lg">
+        <div >
+
+            <h3 >NEW PRODUCT</h3>
+            <div >
+                <div >
+                    <a  > All Product </a>
+                </div>
+
+                <div >
+                    <a  >Computer</a>
+                </div>
+
+                <div >
+                    <a  >SmartPhone</a>
+                </div>
+                <div >
+
+                    <a  >Electronis</a>
+                </div>
+                <div >
+                    <a  >Jewelry</a>
+                </div>
+                <div >
+                    <a  >Sport</a>
+                </div>
+            </div>
+        </div>
+        <Grid item lg="12" container spacing={0}>
               { products.length ? (
               products.map( product => <Product key={ product.id } product={ product } /> )
             ) : ''}
@@ -90,7 +117,7 @@ export default Home;
 
 Home.getInitialProps = async () => {
   const result = await client.query( {
-      query: PRODUCT_QUERY
+      query: PRODUCTS_QUERY
   });
 
   return{
