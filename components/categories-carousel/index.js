@@ -31,33 +31,24 @@ const CategoriesCarousel = ({ gallery }) => {
     const [restartSlide, setRestartSlide] = useState(0);
     const { activeIndex } = activeIndexRef.current;
 
-    /**
-     * Change to next slide.
-     */
-    const nextSlide = () => {
+    // const nextSlide = () => {
 
-        if (1 === gallery.length) {
-            return null;
-        }
+    //     if (1 === gallery.length) {
+    //         return null;
+    //     }
+    //     if (activeIndexRef.current.activeIndex === gallery.length - 1) {
+    //         activeIndexRef.current.activeIndex = 0;
+    //     } else {
+    //         activeIndexRef.current.activeIndex = activeIndexRef.current.activeIndex + 1;
+    //     }
 
-        /**
-         * If if autoplay is set to true
-         * and all slides are finished playing,
-         * set the activeIndex to one and restart the slide from start.
-         */
-        if (activeIndexRef.current.activeIndex === gallery.length - 1) {
-            activeIndexRef.current.activeIndex = 0;
-        } else {
-            activeIndexRef.current.activeIndex = activeIndexRef.current.activeIndex + 1;
-        }
+    //     if (activeIndexRef.current.activeIndex == 0){
+    //         setRestartSlide(restartSlide + 1);
+    //     }
+    //     slideRef.current = slideRef.current + 1;
+    //     setSlide(slideRef.current);
 
-        if (activeIndexRef.current.activeIndex == 0){
-            setRestartSlide(restartSlide + 1);
-        }
-        slideRef.current = slideRef.current + 1;
-        setSlide(slideRef.current);
-
-    };
+    // };
 
     return (
         <div className={classes.category_meta}>
