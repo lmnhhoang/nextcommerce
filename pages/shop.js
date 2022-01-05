@@ -1,8 +1,8 @@
 import React from 'react'
 import client from '../libs/apollo/ApolloClient';
 import gql from 'graphql-tag';
-import { AppContext } from '../components/context/Appcontext';
-import { AppProvider } from '../components/context/Appcontext';
+import { AppContext } from '../libs/context/AppContext';
+import { AppProvider } from '../libs/context/AppContext';
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Typography from '@mui/material/Typography';

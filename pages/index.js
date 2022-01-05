@@ -24,7 +24,7 @@ import NameForm from '../components/formEmail';
 import client from '../libs/apollo/ApolloClient';
 import gql from 'graphql-tag';
 import { AppContext } from '../libs/context/AppContext';
-import { AppProvider } from '../libs/context/Appcontext';
+import { AppProvider } from '../libs/context/AppContext';
 import DealsOfDay from '../components/DealsOfDay';
 import Tab from '../components/tab';
 import TabSeller from '../components/tabSeller';
