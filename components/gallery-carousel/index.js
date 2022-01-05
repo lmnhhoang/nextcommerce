@@ -16,31 +16,31 @@ const GalleryCarousel = ({ gallery }) => {
     /**
      * Change to next slide.
      */
-    const nextSlide = () => {
+    // const nextSlide = () => {
 
-        if (1 === gallery.length) {
-            return null;
-        }
+    //     if (1 === gallery.length) {
+    //         return null;
+    //     }
 
-        /**
-         * If if autoplay is set to true
-         * and all slides are finished playing,
-         * set the activeIndex to one and restart the slide from start.
-         */
-        if (activeIndexRef.current.activeIndex === gallery.length - 1) {
-            activeIndexRef.current.activeIndex = 0;
-        } else {
-            activeIndexRef.current.activeIndex = activeIndexRef.current.activeIndex + 1;
-        }
-        if (activeIndexRef.current.activeIndex == 0){
-            setRestartSlide(restartSlide + 1);
-        }
-        activeIndexRef.current.activeIndex === gallery.length - 1 ? activeIndexRef.current.activeIndex = 0 : activeIndexRef.current.activeIndex = activeIndexRef.current.activeIndex + 1;
+    //     /**
+    //      * If if autoplay is set to true
+    //      * and all slides are finished playing,
+    //      * set the activeIndex to one and restart the slide from start.
+    //      */
+    //     if (activeIndexRef.current.activeIndex === gallery.length - 1) {
+    //         activeIndexRef.current.activeIndex = 0;
+    //     } else {
+    //         activeIndexRef.current.activeIndex = activeIndexRef.current.activeIndex + 1;
+    //     }
+    //     if (activeIndexRef.current.activeIndex == 0){
+    //         setRestartSlide(restartSlide + 1);
+    //     }
+    //     activeIndexRef.current.activeIndex === gallery.length - 1 ? activeIndexRef.current.activeIndex = 0 : activeIndexRef.current.activeIndex = activeIndexRef.current.activeIndex + 1;
         
-        slideRef.current = slideRef.current + 1;
-        setSlide(slideRef.current);
+    //     slideRef.current = slideRef.current + 1;
+    //     setSlide(slideRef.current);
 
-    };
+    // };
 
     return (
         <div className="banner flex flex-col sm:flex-row justify-between overflow-hidden md:mr-4">
