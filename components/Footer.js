@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Box, Grid } from '@mui/material';
+import Link from "next/link";
 
 // add font
 import HomeIcon from '@mui/icons-material/Home';
@@ -11,6 +12,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import GoogleIcon from '@mui/icons-material/Google';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 // makestyle
 import { makeStyles } from "@material-ui/core";
@@ -19,6 +21,8 @@ const colorHeading = '#323232';
 const colorHover = '#40c6ff';
 const colorDefaul = '#666';
 
+// import images
+import imgWorking from '../assets/img/imgWorking.jpg';
 
 const useStyle_footer = makeStyles({
     box_f: {
@@ -123,6 +127,33 @@ const useStyle_footer = makeStyles({
             }
 
         }
+    },
+    descWorking: {
+        color: `${colorDefaul}`,
+        fontSize: '16px',
+        '& span': {
+            display: 'block',
+            lineHeight: '30px',
+        }
+    },
+    boxWorking: {
+        backgroundImage: `url(${imgWorking.src})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        minHeight: '160px',
+        width: ' 100%',
+        borderRadius: '10px',
+        marginTop: '10px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+        color: '#fff',
+        fontSize: '16px',
+        '& svg': {
+            color: '#fe7fa9',
+            marginTop: '10px',
+        }
     }
 
 });
@@ -140,14 +171,40 @@ const Footer = () => {
                                     <ul className={classes.address_f}>
                                         <li><HomeIcon />PO Box CT16122 Collins Street West, Victoria 8007, Australia.</li>
                                         <li><LocalPhoneIcon />+1 (2) 345 6789</li>
-                                        <li><MailIcon /><a href="">contact@yourdomain.com</a></li>
-                                        <li><PublicIcon /><a href="">http://yourdomain.com</a></li>
+                                        <li>
+                                            <MailIcon />
+                                            <Link href="#">
+                                                <a>contact@yourdomain.com</a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <PublicIcon />
+                                            <Link href="#">
+                                                <a>http://yourdomain.com</a>
+                                            </Link>
+                                        </li>
                                     </ul>
                                     <ul className={classes.social_f}>
-                                        <li><a href=""><FacebookSharpIcon /></a></li>
-                                        <li><a href=""><TwitterIcon /></a></li>
-                                        <li><a href=""><LinkedInIcon /></a></li>
-                                        <li><a href=""><GoogleIcon /></a></li>
+                                        <li>
+                                            <Link href="#">
+                                                <a><FacebookSharpIcon /></a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="#">
+                                                <a><TwitterIcon /></a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="#">
+                                                <a><LinkedInIcon /></a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="#">
+                                                <a><GoogleIcon /></a>
+                                            </Link>
+                                        </li>
                                     </ul>
                                 </div>
                             </Grid>
@@ -155,13 +212,13 @@ const Footer = () => {
                                 <div className={classes.box_f}>
                                     <p className={classes.title_f}>Information</p>
                                     <ul className={classes.menu_footer}>
-                                        <li><FiberManualRecordIcon /><a href="">New Product</a></li>
-                                        <li><FiberManualRecordIcon /><a href="">Best Seller</a></li>
-                                        <li><FiberManualRecordIcon /><a href="">Feature Product</a></li>
-                                        <li><FiberManualRecordIcon /><a href="">Deal off day</a></li>
-                                        <li><FiberManualRecordIcon /><a href="">Handcrafted, Artisan Jewelry</a></li>
-                                        <li><FiberManualRecordIcon /><a href="">Jewelry Boxes & Organizers</a></li>
-                                        <li><FiberManualRecordIcon /><a href="">Jewelry Design & Repair</a></li>
+                                        <li><FiberManualRecordIcon /><Link href="#"><a>New Product</a></Link></li>
+                                        <li><FiberManualRecordIcon /><Link href="#"><a>Best Seller</a></Link></li>
+                                        <li><FiberManualRecordIcon /><Link href="#"><a>Feature Product</a></Link></li>
+                                        <li><FiberManualRecordIcon /><Link href="#"><a>Deal off day</a></Link></li>
+                                        <li><FiberManualRecordIcon /><Link href="#"><a>Handcrafted, Artisan Jewelry</a></Link></li>
+                                        <li><FiberManualRecordIcon /><Link href="#"><a>Jewelry Boxes & Organizers</a></Link></li>
+                                        <li><FiberManualRecordIcon /><Link href="#"><a>Jewelry Design & Repair</a></Link></li>
                                     </ul>
                                 </div>
                             </Grid>
@@ -169,25 +226,31 @@ const Footer = () => {
                                 <div className={classes.box_f}>
                                     <p className={classes.title_f}>My account</p>
                                     <ul className={classes.menu_footer}>
-                                        <li><FiberManualRecordIcon /><a href="">My account</a></li>
-                                        <li><FiberManualRecordIcon /><a href="">Wishlist</a></li>
-                                        <li><FiberManualRecordIcon /><a href="">Store List 1</a></li>
-                                        <li><FiberManualRecordIcon /><a href="">Personal Information</a></li>
-                                        <li><FiberManualRecordIcon /><a href="">Order History</a></li>
-                                        <li><FiberManualRecordIcon /><a href="">Other</a></li>
+                                        <li><FiberManualRecordIcon /><Link href="#"><a>My account</a></Link></li>
+                                        <li><FiberManualRecordIcon /><Link href="#"><a>Order History</a></Link></li>
+                                        <li><FiberManualRecordIcon /><Link href="#"><a>Other</a></Link></li>
                                     </ul>
                                 </div>
                             </Grid>
                             <Grid item xs={12} sm={6} md={3}>
                                 <div className={classes.box_f}>
-                                    <p className={classes.title_f}>Instagram</p>
+                                    <p className={classes.title_f}>Working Time</p>
+                                    <div className={classes.descWorking}>
+                                        <span>Mon to Fri:8:30 am - 6:00 pm</span>
+                                        <span>Sat and Sun:10:00 am – 5:00 pm</span>
+                                    </div>
+                                    <div className={classes.boxWorking}>
+                                        <FavoriteIcon />
+                                        <span>Time In Works</span>
+                                        <span>8:30 am - 6:00 pm</span>
+                                    </div>
                                 </div>
                             </Grid>
                         </Grid>
                     </Box>
                 </Container>
             </React.Fragment>
-        </div>
+        </div >
     )
 }
 export default Footer;

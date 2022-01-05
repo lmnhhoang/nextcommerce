@@ -10,27 +10,87 @@ import Banner_2 from '../assets/img/banner2.png';
 import Banner_3 from '../assets/img/banner3.png';
 
 
+// makestyle
+import { makeStyles } from "@material-ui/core";
 
+const useStyle_sliderHome = makeStyles({
+  slider_images: {
+    width: '100%',
+    '@media(min-width:992px)': {
+      minHeight: '650px',
+    },
+    '@media(max-width:991px)': {
+      minHeight: '550px',
+      objectFit: 'cover',
+    },
+    '@media(max-width:575px)': {
+      minHeight: '400px',
+      objectFit: 'cover',
+    },
+  },
+  dotSlider: {
+    padding: '0px',
+    justifyContent: 'center',
+    marginTop: '-45px',
+    zIndex: 10,
+    position: 'relative',
+    background: 'transparent',
+    '& div.MuiMobileStepper-dot': {
+      width: '12px',
+      height: '12px',
+      boxShadow: '0 0 0 2px rgb(255 255 255)',
+      backgroundColor: 'rgba(255,255,255,0.3)',
+      border: 'none',
+      borderRadius: '50%',
+      margin: '0px 7px',
+      position: 'relative',
+      '&::after': {
+        position: 'absolute',
+        content: '""',
+        width: '6px',
+        height: '6px',
+        borderRadius: '50%',
+        background: '#fff',
+        top: '6px',
+        left: '0px',
+        right: '0px',
+        margin: 'auto',
+        transform: 'translateY(-50%)',
+        display: 'none',
+      },
+      '&:hover': {
+        cursor: 'pointer',
+      },
+      '&.MuiMobileStepper-dotActive': {
+        '&::after': {
+          display: 'block',
+        }
+      }
+    }
+  }
+});
 
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const images = [
   {
-    imgPath:Banner_1.src
+    imgPath: Banner_1.src
   },
   {
-    
-    imgPath:Banner_2.src
-    },
+
+    imgPath: Banner_2.src
+  },
   {
-    
-    imgPath:Banner_3.src
-     
+
+    imgPath: Banner_3.src
+
   }
 ];
 
 function SwipeableTextMobileStepper() {
+  const classes = useStyle_sliderHome();
+
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = images.length;
@@ -39,8 +99,7 @@ function SwipeableTextMobileStepper() {
   };
 
   return (
-    <Box sx={{ maxWidth: "100%", flexGrow: 1 }}>
-     
+    <Box classes={classes.sliderBox}>
       <AutoPlaySwipeableViews
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={activeStep}
@@ -50,26 +109,15 @@ function SwipeableTextMobileStepper() {
         {images.map((step, index) => (
           <div key={step.label}>
             {Math.abs(activeStep - index) <= 2 ? (
-              <Box
+              <Box className={classes.slider_images}
                 component="img"
-                sx={{
-                  height: "650px",
-                  display: "block",
-                  maxWidth: "100%",
-                  width: "100%"
-                }}
                 src={step.imgPath}
               />
             ) : null}
           </div>
         ))}
       </AutoPlaySwipeableViews>
-      <MobileStepper
-        sx={{
-          position: "absolute",
-          background: "transparent",
-          right: "50%"
-        }}
+      <MobileStepper className={classes.dotSlider}
         steps={maxSteps}
         position="static"
         activeStep={activeStep}

@@ -26,9 +26,7 @@ import BookIcon from '@mui/icons-material/Book';
 // makestyle
 import { makeStyles } from "@material-ui/core";
 
-const colorHeading = '#323232';
 const colorHover = '#40c6ff';
-const colorDefaul = '#666';
 const useStyle_category_header = makeStyles({
 
   buttonCategory: {
@@ -46,7 +44,20 @@ const useStyle_category_header = makeStyles({
     borderTopLeftRadius: '2px',
     borderTopRightRadius: '2px',
     minWidth: '270px',
-    marginTop:13,
+    marginTop: 13,
+    '@media (max-width: 899px) ': {
+      marginTop: '0px',
+    },
+    '&.active': {
+      cursor: 'pointer',
+      background: `${colorHover}`,
+      color: '#fff',
+      '& svg': {
+        marginLeft: '10px',
+        transition: 'all 0.25s',
+        color: '#fff',
+      }
+    },
     '& svg': {
       marginLeft: '-5px',
       fontSize: '30px',
@@ -96,8 +107,8 @@ const useStyle_category_header = makeStyles({
       }
     }
   },
-  Category:{
-    zIndex:10
+  Category: {
+    zIndex: 10
   }
 });
 
@@ -143,7 +154,8 @@ export default function MenuListComposition() {
 
     <Box className="header">
       <button
-        className={classes.buttonCategory}
+        className={open === false ?
+          `${classes.buttonCategory}` : `${classes.buttonCategory}` + ' ' + `active`}
         ref={anchorRef}
         id="composition-button"
         aria-controls={open ? "composition-menu" : undefined}
@@ -157,7 +169,7 @@ export default function MenuListComposition() {
         <span>ALL CATEGORY</span>
       </button>
       <Popper
-      className={classes.Category}
+        className={classes.Category}
         open={open}
         anchorEl={anchorRef.current}
         role={undefined}

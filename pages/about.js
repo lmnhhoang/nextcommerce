@@ -10,28 +10,32 @@ import Button from "@mui/material/Button";
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PublicIcon from "@mui/icons-material/Public";
+import Banner from '../assets/img/banner_page.png';
+import AboutTeam from '../assets/img/aboutpng.png';
+
 
 const useStyles = makeStyles({
-  pageAccout: {
+  pageAbout: {
     marginBottom: "60px",
     minHeight: "200px",
-    backgroundImage:
-      "url('http://solution.cmsmart.net/wp_multistore/ebay/wp-content/themes/multistore/assets/images/bg-page-title.jpg')",
+    backgroundImage:`url(${Banner.src})`,
     backgroundSize: "cover"
   },
 
-  titlePage: {
+  titlePageAbout: {
     display: "flex",
     paddingTop: "75px",
     paddingBottom: "75px",
-    "@media (max-width: 768px)": {
-      display: "block",
-      textAlign: "-webkit-center"
+    "@media (max-width: 1200px)": {
+      display: "inline-block",
+     
     }
   },
 
-  rightTextPage: {
+  rightTextPageAbout: {
     float: "right",
+    paddingTop:"12px",
+    paddingTop:"12px",
     "@media (max-width: 768px)": {
       float: "inherit"
     }
@@ -40,7 +44,9 @@ const useStyles = makeStyles({
     display: "flex",
     margin: "40px",
     "@media (max-width: 767px)": {
-      display: "block"
+      display: "block",
+      textAlign: "-webkit-center"
+
     }
   },
   avartar: {
@@ -104,6 +110,32 @@ const useStyles = makeStyles({
     fontZize: "14px",
     lineHeight: "24px",
     color: "#999"
+  },
+  profileOutTeam:{
+    display:"flex",
+    '@media (max-width: 768px)': {
+      display:"block"
+  },'@media (max-width: 600px)': {
+    display:"block"
+}
+  },
+  profile_item:{
+    display:"contents",
+  '@media (max-width: 768px)': {
+    display:"flex"
+  },
+  '@media (max-width: 600px)': {
+    display:"block"
+},
+  },
+  aboutIcon:{
+    border: "1px solid #fff",
+    borderRadius: "40px",
+    color: "#fff",
+    fontSize: "80px",
+    padding: "15px",
+    margin: "10px",
+    background: "#40c6ff"
   }
 });
 
@@ -111,9 +143,9 @@ export default function About() {
   const classes = useStyles();
   return (
     <>
-      <Box className={classes.pageAccout}>
+      <Box className={classes.pageAbout}>
         <Container>
-          <Box className={classes.titlePage}>
+          <Box className={classes.titlePageAbout}>
             <Grid item lg={6}>
               <Box>
                 <Typography sx={{ color: "white" }} component="h3" variant="h3">
@@ -122,7 +154,7 @@ export default function About() {
               </Box>
             </Grid>
             <Grid item lg={6}>
-              <Box className={classes.rightTextPage}>
+              <Box className={classes.rightTextPageAbout}>
                 <Breadcrumbs sx={{ color: "white" }} aria-label="breadcrumb">
                   <Typography
                     sx={{ color: "white" }}
@@ -161,7 +193,7 @@ export default function About() {
               color: "#676c77"
             }}
           >
-            Multistore vision is to create India's most reliable and
+            Multistore vision is to create Indias most reliable and
             frictionless commerce ecosystem that creates life-changing
             experiences for buyers and sellers.
           </Typography>
@@ -171,17 +203,7 @@ export default function About() {
           sx={{ display: "flex", margin: "40px" }}
         >
           <Grid item xs={4} lg={4} sx={{ textAlign: "center" }}>
-            <Inventory2OutlinedIcon
-              sx={{
-                border: "1px solid #fff",
-                borderRadius: "40px",
-                color: "#fff",
-                fontSize: "30px",
-                padding: "15px",
-                margin: "10px",
-                background: "#40c6ff"
-              }}
-            />
+            <Inventory2OutlinedIcon className={classes.aboutIcon} />
             <Typography sx={{ fontWeight: "700" }} component="h5" variant="h5">
               35 Million+
             </Typography>
@@ -190,17 +212,7 @@ export default function About() {
             </Typography>
           </Grid>
           <Grid item xs={4} lg={4} sx={{ textAlign: "center" }}>
-            <ShoppingCartIcon
-              sx={{
-                border: "1px solid #fff",
-                borderRadius: "40px",
-                color: "#fff",
-                fontSize: "30px",
-                padding: "15px",
-                margin: "10px",
-                background: "#40c6ff"
-              }}
-            />
+            <ShoppingCartIcon className={classes.aboutIcon}/>
             <Typography sx={{ fontWeight: "700" }} component="h5" variant="h5">
               250,000
             </Typography>
@@ -209,17 +221,7 @@ export default function About() {
             </Typography>
           </Grid>
           <Grid item xs={4} lg={4} sx={{ textAlign: "center" }}>
-            <PublicIcon
-              sx={{
-                border: "1px solid #fff",
-                borderRadius: "40px",
-                color: "#fff",
-                fontSize: "30px",
-                padding: "15px",
-                margin: "10px",
-                background: "#40c6ff"
-              }}
-            />
+            <PublicIcon className={classes.aboutIcon}/>
             <Typography sx={{ fontWeight: "700" }} component="h5" variant="h5">
               6000+
             </Typography>
@@ -236,7 +238,7 @@ export default function About() {
             }}
           >
             In February 2010, Kunal Bahl along with Rohit Bansal, started
-            Multistore.com – India’s largest online marketplace, with the widest
+            Multistore.com  Indias largest online marketplace, with the widest
             assortment of 30 million plus products across 800 plus Boxerse
             categories from over 125,000 regional, national, and international
             brands and retailers.
@@ -264,7 +266,7 @@ export default function About() {
             others.
           </Typography>
         </Box>
-        <Box sx={{ textAlign: "center" }}>
+        <Box sx={{ textAlign: "center",marginTop:"80px" }}>
           <Typography
             sx={{ fontWeight: "700", lineHeight: "32px" }}
             component="h4"
@@ -280,18 +282,19 @@ export default function About() {
             }}
           >
             Each member of our team is a specialist in his or her field.
-            Together, we make sure you’re investing where the best returns are,
+            Together, we make sure youre investing where the best returns are,
             while building loyalty across every touchpoint.
           </Typography>
         </Box>
-        <Box sx={{ display: "flex" }} lg={12}>
-          <Grid item lg={3} md={6}>
+        <Grid className={classes.profileOutTeam} columns={{ xs: 4, sm: 6, md: 4, lg: 3 }}>
+          <Box className={classes.profile_item}>
+          <Grid item lg={1} >
             <Box className={classes.profileItem}>
               <Grid className={classes.author}>
                 <Box className={classes.logo}>
                   <img
                     className={classes.avartar}
-                    src="http://solution.cmsmart.net/wp_multistore/ebay/wp-content/uploads/2016/12/aboutteam04.jpg"
+                    src={AboutTeam.src}
                     alt="Philip Demarco"
                   />
                 </Box>
@@ -319,13 +322,13 @@ export default function About() {
               </Box>
             </Box>
           </Grid>
-          <Grid item lg={3} md={6}>
+          <Grid item lg={1}>
             <Box className={classes.profileItem}>
               <Grid className={classes.author}>
                 <Box className={classes.logo}>
                   <img
                     className={classes.avartar}
-                    src="http://solution.cmsmart.net/wp_multistore/ebay/wp-content/uploads/2016/12/aboutteam04.jpg"
+                    src={AboutTeam.src}
                     alt="Philip Demarco"
                   />
                 </Box>
@@ -353,13 +356,15 @@ export default function About() {
               </Box>
             </Box>
           </Grid>
-          <Grid item lg={3} md={6}>
+          </Box>
+          <Box className={classes.profile_item}>
+          <Grid  item lg={1}>
             <Box className={classes.profileItem}>
               <Grid className={classes.author}>
                 <Box className={classes.logo}>
                   <img
                     className={classes.avartar}
-                    src="http://solution.cmsmart.net/wp_multistore/ebay/wp-content/uploads/2016/12/aboutteam04.jpg"
+                    src={AboutTeam.src}
                     alt="Philip Demarco"
                   />
                 </Box>
@@ -387,13 +392,13 @@ export default function About() {
               </Box>
             </Box>
           </Grid>
-          <Grid item lg={3} md={6}>
+          <Grid item lg={1} >
             <Box className={classes.profileItem}>
               <Grid className={classes.author}>
                 <Box className={classes.logo}>
                   <img
                     className={classes.avartar}
-                    src="http://solution.cmsmart.net/wp_multistore/ebay/wp-content/uploads/2016/12/aboutteam04.jpg"
+                    src={AboutTeam.src}
                     alt="Philip Demarco"
                   />
                 </Box>
@@ -421,7 +426,8 @@ export default function About() {
               </Box>
             </Box>
           </Grid>
-        </Box>
+          </Box>
+        </Grid>
       </Container>
     </>
   );

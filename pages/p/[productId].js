@@ -1,8 +1,9 @@
 import client from '../../libs/apollo/ApolloClient';
 import gql from 'graphql-tag';
+import { withRouter } from 'next/router';
 
 
-const singleProduct = (props) => {
+const singleProduct = withRouter(props => {
     const { singleData } = props;
     return (
         <div>
@@ -18,7 +19,7 @@ const singleProduct = (props) => {
             <div>--SKU: {singleData.sku ? singleData.sku : 'SKU'}</div>
         </div>
     )
-}
+});
 
 singleProduct.getInitialProps = async function( context ){
     let { query: { productId }} = context;

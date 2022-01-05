@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Box, Grid, Hidden } from '@mui/material';
+import Link from "next/link";
 
 
 // import icon
@@ -156,10 +157,10 @@ const SideBarTop = () => {
           <Grid item sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }} md={6}>
             <Box>
               <ul className={classes.menuTop}>
-                <li><a href="#">Get the app</a></li>
-                <li><a href="#">Sell on Multistore</a></li>
-                <li><a href="#">Customer Care</a></li>
-                <li><a href="#">Track my order</a></li>
+                <li><Link href="#"><a>Get the app</a></Link></li>
+                <li><Link href="#"><a>Sell on Multistore</a></Link></li>
+                <li><Link href="#"><a>Customer Care</a></Link></li>
+                <li><Link href="#"><a>Track my order</a></Link></li>
               </ul>
             </Box>
           </Grid>
@@ -179,8 +180,6 @@ const SideBarTop = () => {
                     <option value="">Viet Nam</option>
                   </select>
                 </li>
-                <li><a href="#"><EditSharpIcon /><span>Join free</span></a></li>
-                <li><a href="#"><LoginSharpIcon /><span>Login</span></a></li>
               </ul>
             </Box>
           </Grid>

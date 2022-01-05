@@ -1,140 +1,159 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Menu from '@mui/material/Menu';
+import Link from 'next/link';
+import { useState } from 'react';
 
-// import img
-import icon_menu from '../assets/img/icon_menu.png'
+
 
 
 // makestyle
 import { makeStyles } from "@material-ui/core";
-
-
-const colorHeading = '#323232';
 const colorHover = '#40c6ff';
 const colorDefaul = '#666';
 
+
 const useStyle_menuMain = makeStyles({
-  menuMain: {
-    flexGrow: 1,
+  navmenu: {
+    padding: '0px',
+    margin: '0px',
     display: 'flex',
-    '@media (max-width:899px)': {
-      display: 'none',
-    },
-    '& a': {
-      textTransform: 'uppercase',
-      fontFamily: "Mulish,'sans-serif'",
-      color: `${colorDefaul}`,
-      padding: '0px 22px',
-      fontSize: '16px',
-      '&:first-child': {
-        paddingLeft: '0px',
+    justifyContent: 'left',
+    alignItems: 'center',
+    minHeight: '64px',
+    '& li': {
+      float: 'left',
+      listStyle: 'none',
+      display: 'inline-block',
+      '& a': {
+        color: `${colorDefaul}`,
+        padding: ' 0px 22px',
+        fontSize: '16px',
+        fontFamily: 'Mulish,sans-serif',
+        textTransform: 'uppercase',
+        '&:hover': {
+          color: `${colorHover}`,
+        }
       },
-      '&:hover': {
-        color: `${colorHover}`,
-      }
+      '&:first-child': {
+        '& a': {
+          paddingLeft: '0px',
+        }
+      },
     }
   },
-  buttonMobile: {
-    flexGrow: 1,
+  hamburger: {
     display: 'none',
-    '@media (max-width:899px)': {
-      display: 'flex',
-      justifyContent: 'flex-end',
+  },
+  bar: {
+    display: 'block',
+    width: '24px',
+    height: '3px',
+    margin: '5px auto',
+    transition: 'all 0.3s ease-in-out',
+    backgroundColor: '#222222',
+  },
+  '@media (max-width: 899px) ': {
+    navbar: {
+      position: 'relative',
     },
-    '& button': {
-      marginTop: '14px',
-      width: '36px',
-      height: '36px',
+    navmenu: {
+      display: 'block',
+      position: 'absolute',
+      right: '0px',
+      top: '100px',
+      flexDirection: 'column',
+      backgroundColor: '#fff',
+      width: ' 100%',
+      textAlign: 'left',
+      maxWidth: '270px',
+      minWidth: '270px',
+      transition: '0.3s',
+      boxShadow: ' 0 10px 27px rgba(0, 0, 0, 0.05)',
+      opacity: '0',
+      padding: ' 0px 10px',
+      '&.active': {
+        top: '44px',
+        opacity: '1',
+        zIndex: '100',
+      },
+      '& li': {
+        float: 'none',
+        display: 'block',
+        height: '40px',
+        lineHeight: '40px',
+        '& a': {
+          padding: '0px',
+          fontSize: '14px',
+        }
+      }
+    },
+    hamburger: {
+      position: 'absolute',
+      display: 'block',
+      cursor: 'pointer',
+      right: '0px',
+      top: '10px',
+      padding: '0px',
       backgroundColor: '#fff',
       border: 'none',
-      backgroundImage: `url(${icon_menu.src})`,
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center center',
-      '&:hover': {
-        cursor: 'pointer',
-      }
-    }
-  },
-  menuMobile: {
-    '& ul': {
-      padding: '0px',
-      '& li': {
-        minWidth: '270px',
-        '& a': {
-          display: 'block',
-          width: '100%',
-          textTransform: 'uppercase',
-          color: `${colorDefaul}`,
-          fontSize: '14px',
-          height: '40px',
-          lineHeight: '40px',
-          padding: '0px 10px',
-          '&:hover': {
-            color: `${colorHover}`,
-          }
+      '&.active': {
+        outline: 'none',
+        '& span:nth-child(1)': {
+          transform: 'translateY(8px) rotate(45deg)',
+        },
+        '& span:nth-child(2)': {
+          opacity: '0',
+        },
+        '& span:nth-child(3)': {
+          transform: 'translateY(-8px) rotate(-45deg)',
         }
       }
     }
   }
-})
+});
 
-
-const pages = ['Home', 'Vendor', 'Shop', 'Pages ', 'Blog', 'Contact'];
 const ResponsiveAppBar = () => {
-
   const classes = useStyle_menuMain()
-
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-
-
+  const [isOpen, setIsOpen] = useState(false);
+  const openMenu = () => setIsOpen(!isOpen);
   return (
-    <Box>
-      <Toolbar disableGutters>
-        <Box className={classes.buttonMobile}>
-          <button
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleOpenNavMenu}
-          >
-          </button>
-          <Menu className={classes.menuMobile}
-            id="menu-appbar"
-            elevation={1}
-            anchorEl={anchorElNav}
-            keepMounted
-            open={Boolean(anchorElNav)}
-            onClose={handleCloseNavMenu}
-          >
-            {pages.map((page) => (
-              <li key={page} onClick={handleCloseNavMenu}>
-                <a href="#">{page}</a>
-              </li>
-            ))}
-          </Menu>
-        </Box>
-
-        <Box className={classes.menuMain}>
-          {pages.map((page) => (
-            <a href="#"
-              key={page}
-              onClick={handleCloseNavMenu}
-            >
-              {page}
-            </a>
-          ))}
-        </Box>
-      </Toolbar >
-    </Box >
-  );
+    <>
+      <nav className={classes.navbar}>
+        <ul className={isOpen === false ?
+          `${classes.navmenu}` : `${classes.navmenu}` + ' ' + `active`}>
+          <li className={classes.navitem}>
+            <Link href="/">
+              <a className={classes.navlink}>Home</a>
+            </Link>
+          </li>
+          <li className={classes.navitem}>
+            <Link href="/shop">
+              <a className={classes.navlink}>Shop</a>
+            </Link>
+          </li>
+          <li className={classes.navitem}>
+            <Link href="/about">
+              <a className={classes.navlink}>About</a>
+            </Link>
+          </li>
+          <li className={classes.navitem}>
+            <Link href="/contact">
+              <a className={classes.navlink}>Contact</a>
+            </Link>
+          </li>
+          <li className={classes.navitem}>
+            <Link href="/myaccount">
+              <a className={classes.navlink}>My Account</a>
+            </Link>
+          </li>
+        </ul>
+        <button className={isOpen === false ?
+          `${classes.hamburger}` : `${classes.hamburger}` + ' ' + `active`} onClick={openMenu}>
+          <span className={classes.bar}></span>
+          <span className={classes.bar}></span>
+          <span className={classes.bar}></span>
+        </button>
+      </nav>
+    </>
+  )
 };
 export default ResponsiveAppBar;

@@ -23,10 +23,15 @@ import NameForm from '../components/formEmail';
 //import request data
 import client from '../libs/apollo/ApolloClient';
 import gql from 'graphql-tag';
+import { AppContext } from '../libs/context/AppContext';
+import { AppProvider } from '../libs/context/Appcontext';
+import DealsOfDay from '../components/DealsOfDay';
+import Tab from '../components/tab';
+import TabSeller from '../components/tabSeller';
+import Logo from '../components/tabsLogo';
 
-
-const PRODUCTS_QUERY= gql`query{
-  products(first: 8) {
+const PRODUCT_QUERY = gql`query Product($cat:String!, $cat1:String! ){
+  first:products(first: 8,where: {category: $cat}) {
     nodes {
       id
       databaseId
@@ -55,72 +60,86 @@ const PRODUCTS_QUERY= gql`query{
       }
     }
   }
+  second:products(where:  {category: $cat1 orderby: {field: TOTAL_SALES, order: DESC}}, first: 8) {
+    nodes {
+      id
+      image {
+        sourceUrl
+        title
+      }
+      name
+      slug
+      ... on SimpleProduct{
+        price
+        regularPrice
+      }
+      ... on VariableProduct {
+        price
+        regularPrice
+      }
+    }
+  }
 }`;
 
 
 const Home = (props) => {
-  const {products} = props;
+  const { products, productseller } = props;
   return (
-    <div>
-      <SwipeableTextMobileStepper />
-      <Container maxWidth="lg">
-        <div >
-
-            <h3 >NEW PRODUCT</h3>
-            <div >
-                <div >
-                    <a  > All Product </a>
-                </div>
-
-                <div >
-                    <a  >Computer</a>
-                </div>
-
-                <div >
-                    <a  >SmartPhone</a>
-                </div>
-                <div >
-
-                    <a  >Electronis</a>
-                </div>
-                <div >
-                    <a  >Jewelry</a>
-                </div>
-                <div >
-                    <a  >Sport</a>
-                </div>
-            </div>
-        </div>
-        <Grid item lg="12" container spacing={0}>
-              { products.length ? (
-              products.map( product => <Product key={ product.id } product={ product } /> )
+    <AppProvider>
+      <div>
+        <SwipeableTextMobileStepper />
+        <DealsOfDay />
+        <Container>
+          <Tab />
+          <Grid container spacing={{ sm: 2, md: 2, xs: 4, lg: 3 }} columns={{ xs: 4, sm: 6, md: 4, lg: 4 }}>
+            {products.length ? (
+              products.map(product => <Product key={product.id} product={product} />)
             ) : ''}
-        </Grid>
-      </Container>
-      
-      <NewImageList />
-      {/* <Container>
-        <Grid container spacing={{ xs: 4, md: 3 }} columns={{ xs: 4, sm: 6, md: 3, lg: 3}}>
-              { products.length ? (
-              products.map( product => <Product key={ product.id } product={ product } /> )
-            ) : ''}
-        </Grid>
-      </Container> */}
-      <SellerImageList />
-      <NameForm />
+          </Grid>
+        </Container>
 
-    </div>
+        <NewImageList />
+        <Container>
+          <TabSeller />
+          <Grid container spacing={{ sm: 2, md: 2, xs: 4, lg: 3 }} columns={{ xs: 4, sm: 6, md: 4, lg: 4 }}>
+            {productseller.length ? (
+              productseller.map(product => <Product key={product.id} product={product} />)
+            ) : ''}
+          </Grid>
+        </Container>
+        <SellerImageList />
+        <Logo/>
+        <NameForm/>
+      </div>
+    </AppProvider>
   )
 }
 
 export default Home;
+// Home.getServerSideProps = async (context) => {
+//   console.log(context);
+//   const result = await client.query({
+//     query: PRODUCT_QUERY
+//   });
 
-Home.getInitialProps = async () => {
-  const result = await client.query( {
-      query: PRODUCTS_QUERY
+//   return {
+//     products: result.data.first.nodes,
+//     productseller: result.data.second.nodes,
+//   }
+// }
+export async function getServerSideProps({ query }) {
+  const cat = query.cat ? query.cat : "";
+  const cat1 = query.cat1 ? query.cat1 : "";
+  const result = await client.query({
+    query: PRODUCT_QUERY,
+    variables: {
+      cat, cat1
+    },
   });
-
-  return{
-      products: result.data.products.nodes, 
-  }
+  return {
+    props: {
+      products: result.data.first.nodes,
+      productseller: result.data.second.nodes,
+    },
+  };
 }

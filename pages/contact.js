@@ -10,14 +10,14 @@ import Button from "@mui/material/Button";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import AddLocationIcon from "@mui/icons-material/AddLocation";
 import EmailIcon from "@mui/icons-material/Email";
+import Banner from '../assets/img/banner_page.png';
 
 
-const useStyles = makeStyles({
+  const useStyles = makeStyles({
   pageAccout: {
     marginBottom: "60px",
     minHeight: "200px",
-    backgroundImage:
-      "url('http://solution.cmsmart.net/wp_multistore/ebay/wp-content/themes/multistore/assets/images/bg-page-title.jpg')",
+    background:`url(${Banner.src})`,
     backgroundSize: "cover"
   },
 
@@ -31,6 +31,7 @@ const useStyles = makeStyles({
   },
 
   rightTextPage: {
+    paddingTop:"12px",
     float: "right",
     "@media (max-width: 768px)": {
       float: "inherit"
