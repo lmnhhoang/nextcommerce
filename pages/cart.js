@@ -1,6 +1,6 @@
 import Container from "@mui/material/Container";
 import CartItemsContainer from '../components/cart/cart-page/CartItemsContainer';
-import { AppProvider } from "../components/context/Appcontext";
+import { AppProvider } from "../libs/context/AppContext";
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';import Banner from '../assets/img/banner_page.png';
 import Breadcrumbs from "@mui/material/Breadcrumbs";
