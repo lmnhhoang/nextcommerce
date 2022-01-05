@@ -15,7 +15,7 @@ import Divider from '@mui/material/Divider';
 import { Link } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import { Input } from "@material-ui/core";
-import { TabsUnstyled , TabsListUnstyled , TabPanelUnstyled , TabUnstyled } from "@mui/base";
+ import { TabsUnstyled , TabsListUnstyled , TabPanelUnstyled , TabUnstyled } from "@mui/base";
 // import TabsUnstyled from "@mui/base/TabsUnstyled";
 // import TabsListUnstyled from "@mui/base/TabsListUnstyled";
 // import TabPanelUnstyled from "@mui/base/TabPanelUnstyled";
@@ -145,8 +145,9 @@ const useStyles = makeStyles({
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const Checkout = () => {
     const classes = useStyles();
-
-    let existingCart = localStorage.getItem('woo-next-cart');
+    if (typeof window !== 'undefined') {
+        let existingCart = localStorage.getItem('woo-next-cart');
+    }
     existingCart = JSON.parse(existingCart);
     console.warn(existingCart);
     return (

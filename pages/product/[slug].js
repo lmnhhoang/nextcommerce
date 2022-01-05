@@ -347,7 +347,8 @@ export async function getStaticProps(context) {
         props: {
             product: data?.product || {},
         },
-        revalidate: 1
+        revalidate: 10,
+        notFound: true,
     };
 }
 
