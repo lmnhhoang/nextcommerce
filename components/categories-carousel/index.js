@@ -46,18 +46,14 @@ const CategoriesCarousel = ({ gallery }) => {
          * set the activeIndex to one and restart the slide from start.
          */
         if (activeIndexRef.current.activeIndex === gallery.length - 1) {
-
             activeIndexRef.current.activeIndex = 0;
-            setRestartSlide(restartSlide + 1);
-
         } else {
-
-            // If its not the last slide increment active index by one.
-            activeIndexRef.current.activeIndex =
-                activeIndexRef.current.activeIndex + 1;
-
+            activeIndexRef.current.activeIndex = activeIndexRef.current.activeIndex + 1;
         }
 
+        if (activeIndexRef.current.activeIndex == 0){
+            setRestartSlide(restartSlide + 1);
+        }
         slideRef.current = slideRef.current + 1;
         setSlide(slideRef.current);
 
