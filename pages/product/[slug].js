@@ -242,7 +242,7 @@ export default function Product(props) {
                                         <img src={product?.image?.sourceUrl} alt="" />
                                         <div className={classes.galleryImages}>
                                             {!isEmpty(product?.galleryImages?.nodes) ? (
-                                                <GalleryCarousel gallery={product?.galleryImages?.nodes} />
+                                                {/* <GalleryCarousel gallery={product?.galleryImages?.nodes} /> */}
                                             ) : !isEmpty(product.image) ? (
                                                 <img
                                                     src={product?.image?.sourceUrl}
@@ -268,7 +268,7 @@ export default function Product(props) {
                                         <div className={classes.product_meta}>
                                             <div className={classes.sku_title}>SKU: {product.sku}</div>
                                             {!isEmpty(product?.productCategories?.nodes) ? (
-                                                <CategoriesCarousel gallery={product?.productCategories?.nodes} />
+                                                {/* <CategoriesCarousel gallery={product?.productCategories?.nodes} /> */}
                                             ) : !isEmpty(product.name) ? (
                                                 <div className={classes.sku_name}>SKU: {product.name}</div>
                                             ) : null}
