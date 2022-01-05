@@ -351,21 +351,21 @@ export async function getStaticProps(context) {
     };
 }
 
-export async function getStaticPaths() {
-    const { data } = await client.query({
-        query: PRODUCT_SLUGS
-    })
+// export async function getStaticPaths() {
+//     const { data } = await client.query({
+//         query: PRODUCT_SLUGS
+//     })
 
-    const pathsData = []
+//     const pathsData = []
 
-    data?.products?.nodes && data?.products?.nodes.map((product) => {
-        if (!isEmpty(product?.slug)) {
-            pathsData.push({ params: { slug: product?.slug } })
-        }
-    })
+//     data?.products?.nodes && data?.products?.nodes.map((product) => {
+//         if (!isEmpty(product?.slug)) {
+//             pathsData.push({ params: { slug: product?.slug } })
+//         }
+//     })
 
-    return {
-        paths: pathsData,
-        fallback: true
-    }
-}
+//     return {
+//         paths: pathsData,
+//         fallback: true
+//     }
+// }
