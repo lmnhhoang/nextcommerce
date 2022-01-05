@@ -145,11 +145,14 @@ const useStyles = makeStyles({
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const Checkout = () => {
     const classes = useStyles();
-    if (typeof window !== 'undefined') {
-        let existingCart = localStorage.getItem('woo-next-cart');
+    let existingCart = '';
+    if (typeof localStorage !== 'undefined') {
+        existingCart = localStorage.getItem('woo-next-cart');
+        existingCart = JSON.parse(existingCart);
     }
-    existingCart = JSON.parse(existingCart);
-    console.warn(existingCart);
+    // let existingCart = localStorage ? localStorage.getItem('woo-next-cart'): '';
+    // existingCart = JSON.parse(existingCart);
+    // console.warn(existingCart);
     return (
         <>
             <Box className={classes.page}>
